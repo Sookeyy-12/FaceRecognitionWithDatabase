@@ -17,7 +17,7 @@ for path in modePath:
     imgModeList.append(cv2.imread(f"Resources/Modes/{path}"))
 
 # Number of frames to skip
-skip_frames = 2
+skip_frames = 5
 frame_count = 0
 
 # Load the Encoding File

@@ -16,8 +16,8 @@ for path in pathList:
 def findEncodings(imagesList):
     encodeList  = []
     for img in imagesList:
-        rgbimg = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        encode = face_recognition.face_encodings(rgbimg)[0]
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        encode = face_recognition.face_encodings(img)[0]
         encodeList.append(encode)
     
     return encodeList
