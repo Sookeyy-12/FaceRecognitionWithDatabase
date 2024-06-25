@@ -3,8 +3,9 @@ import os
 import pickle
 import face_recognition
 import numpy as np
+import cvzone
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, 640)  # Set width
 cap.set(4, 480)  # Set height
 
@@ -42,13 +43,21 @@ while True:
 
         imgBackground[120:120 + 480, 68:68 + 640] = img
         imgBackground[30:30 + 180, 780:780 + 450] = imgModeList[0]
-        cv2.imshow("Face Attendance", imgBackground)
 
         for encodeFace, faceLocation in zip(encodeCurrentFrame, faceCurrentFrame):
             matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
             faceDistance = face_recognition.face_distance(encodeListKnown, encodeFace)
             matchIndex = np.argmin(faceDistance)
-            
+            if matches[matchIndex]:
+                # print("Known Face Detected")
+                # print(studentIDs[matchIndex])
+                y1, x2, y2, x1 = faceLocation
+                y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
+                bbox = x1 + 68, y1 + 120, x2 - x1, y2 - y1
+                imgBackground = cvzone.cornerRect(imgBackground, bbox, rt=0)
+
+
+        cv2.imshow("Face Attendance", imgBackground)
 
     # Wait for a key press to break the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):

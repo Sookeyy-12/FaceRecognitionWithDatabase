@@ -1,5 +1,4 @@
-facerecog
-*.jpg
-und
-hi
+# venvs
+facerecognition
+# dataset images
 Images/*

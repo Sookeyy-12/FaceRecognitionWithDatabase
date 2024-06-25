@@ -1,4 +1,4 @@
 opencv-python
 face-recognition
 numpy==1.26.4
-Resources\dlib\dlib-19.24.1-cp311-cp311-win_amd64.whl
+cvzone
