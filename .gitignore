@@ -2,3 +2,4 @@
 facerecognition
 # dataset images
 Images/*
+serviceAccountKey.json
